@@ -18,13 +18,19 @@ public class LigneFraisHorsForfait {
     private Long id;
 
     private LocalDate date;
-    private double montant;
+    private double montantHF;
     private String libelle;
     
     @ManyToOne
         @JoinColumn(name ="ficheFrais_id", nullable = false)
     private FicheFrais ficheFrais;
     
+    public FicheFrais getFicheFrais() {
+        return ficheFrais;
+    }
+    public void setFicheFrais(FicheFrais ficheFrais) {
+        this.ficheFrais = ficheFrais;
+    }
     public Long getId() {
         return id;
     }
@@ -39,11 +45,11 @@ public class LigneFraisHorsForfait {
         this.date = date;
     }
 
-    public double getMontant() {
-        return montant;
+    public double getMontantHF() {
+        return montantHF;
     }
-    public void setMontant(double montant) {
-        this.montant = montant;
+    public void setMontantHF(double montant) {
+        this.montantHF = montant;
     }
     public String getLibelle() {
         return libelle;

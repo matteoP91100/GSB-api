@@ -17,11 +17,23 @@ public class LigneFraisForfait {
     @ManyToOne
         @JoinColumn(name ="ficheFrais_id", nullable = false)
     private FicheFrais ficheFrais;
-    
+   
+    public FicheFrais getFicheFrais() {
+        return ficheFrais;
+    }
+    public void setFicheFrais(FicheFrais ficheFrais) {
+        this.ficheFrais = ficheFrais;
+    }
     @ManyToOne
         @JoinColumn(name ="fraisForfait_id", nullable = false)
     private FraisForfait fraisForfait;
 
+    public FraisForfait getFraisForfait() {
+        return fraisForfait;
+    }
+    public void setFraisForfait(FraisForfait fraisForfait) {
+        this.fraisForfait = fraisForfait;
+    }
     public Long getId() {
         return id;
     }

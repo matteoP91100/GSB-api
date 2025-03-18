@@ -14,7 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String username;
     private String lastname;
     private String email;
     private String password;
@@ -33,10 +33,10 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return username;
     }
     public void setName(String name) {
-        this.name = name;
+        this.username = name;
     }
 
     public String getLastname() {

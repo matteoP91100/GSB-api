@@ -17,7 +17,9 @@ public class FraisForfaitService {
         return fraisForfaRepository.findAll();
     }
 
-    public FraisForfait saveFraisForfait(FraisForfait fraisForfait){
-        return fraisForfaRepository.save(fraisForfait);
+    public void saveMultipleFrais(List<FraisForfait> fraisList) {
+        for (FraisForfait frais : fraisList) {
+            fraisForfaRepository.save(frais);  // 🔄 Sauvegarde chaque frais un par un
+        }
     }
 }

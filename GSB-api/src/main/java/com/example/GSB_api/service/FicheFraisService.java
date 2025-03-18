@@ -9,6 +9,7 @@ import com.example.GSB_api.model.FicheFrais;
 import com.example.GSB_api.repository.FicheFraisRepository;
 
 @Service
+
 public class FicheFraisService {
     @Autowired
     private FicheFraisRepository FicheFraisRepository;
@@ -18,7 +19,6 @@ public class FicheFraisService {
     }
     
     public FicheFrais saveFicheFrais (FicheFrais ficheFrais) {
-        //System.out.println(ficheFrais);
         return FicheFraisRepository.save(ficheFrais);
     }
 }
