@@ -1,14 +1,11 @@
 package com.example.GSB_api.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class FraisForfait {
@@ -18,15 +15,20 @@ public class FraisForfait {
     private String type;
     private double montantF;
 
-    @OneToMany(mappedBy ="fraisForfait", cascade = CascadeType.ALL)
-    private List<LigneFraisForfait> ligneFraisForfaits = new ArrayList<>();
 
-    public List<LigneFraisForfait> getLigneFraisForfaits() {
-        return ligneFraisForfaits;
+    
+    @ManyToOne
+    @JoinColumn(name ="ficheFrais_id", nullable = false)
+
+private FicheFrais ficheFrais;
+
+    public FicheFrais getFicheFrais() {
+        return ficheFrais;
     }
-    public void setLigneFraisForfaits(List<LigneFraisForfait> ligneFraisForfaits) {
-        this.ligneFraisForfaits = ligneFraisForfaits;
+    public void setFicheFrais(FicheFrais ficheFrais) {
+        this.ficheFrais = ficheFrais;
     }
+
     public Long getId() {
         return id;
     }

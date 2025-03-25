@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,8 +22,18 @@ public class User {
     private String role;
     
 
-        @OneToMany(mappedBy ="user", cascade = CascadeType.ALL)
-    private List<FicheFrais> ficheFrais;
+
+
+    @OneToMany(mappedBy ="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<LigneFraisForfait> ligneFraisForfaits;
+
+    public List<LigneFraisForfait> getLigneFraisForfaits() {
+        return ligneFraisForfaits;
+    }
+
+    public void setLigneFraisForfaits(List<LigneFraisForfait> ligneFraisForfaits) {
+        this.ligneFraisForfaits = ligneFraisForfaits;
+    }
 
     public Long getId() {
         return id;

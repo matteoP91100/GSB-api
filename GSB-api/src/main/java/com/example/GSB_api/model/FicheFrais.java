@@ -35,6 +35,8 @@ public class FicheFrais {
     private List<LigneFraisForfait> ligneFraisForfaits;
 
 
+    @OneToMany(mappedBy ="ficheFrais",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<FraisForfait> FraisForfaits;
 
     @OneToMany(mappedBy ="ficheFrais",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<LigneFraisHorsForfait> ligneFraisHorsForfaits;
@@ -44,8 +46,10 @@ public class FicheFrais {
 
     @ManyToOne()
         @JoinColumn(name ="user_id", nullable = false)
+
     private User user;
     
+
     @ManyToOne()
         @JoinColumn(name ="etat_id", nullable = false)
     private Etat etat;
@@ -107,6 +111,14 @@ public class FicheFrais {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<FraisForfait> getFraisForfaits() {
+        return FraisForfaits;
+    }
+
+    public void setFraisForfaits(List<FraisForfait> FraisForfaits) {
+        this.FraisForfaits = FraisForfaits;
     }
 
 }

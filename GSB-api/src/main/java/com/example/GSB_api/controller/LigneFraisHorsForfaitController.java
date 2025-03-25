@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,8 @@ import com.example.GSB_api.service.LigneFraisHorsForfaitService;
 
 @RestController
 @RequestMapping("/api/lignefraishorsforfaits")
+@CrossOrigin(origins = "*")
+
 public class LigneFraisHorsForfaitController {
     @Autowired
     private LigneFraisHorsForfaitService ligneFraisHorsForfaitService;
@@ -36,8 +39,8 @@ public class LigneFraisHorsForfaitController {
     }
 
     @PostMapping("/save")
-    public LigneFraisHorsForfait creatLigneFraisHorsForfait (@RequestBody LigneFraisHorsForfait ligneFraisHorsForfait) {
-        return ligneFraisHorsForfaitService.savLigneFraisHorsForfait(ligneFraisHorsForfait);
+    public LigneFraisHorsForfait createLigneFraisHorsForfait (@RequestBody LigneFraisHorsForfait ligneFraisHorsForfait) {
+        return ligneFraisHorsForfaitService.saveLigneFraisHorsForfait(ligneFraisHorsForfait);
     }
     
 }

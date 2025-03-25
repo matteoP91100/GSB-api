@@ -17,7 +17,7 @@ public class LigneFraisHorsForfaitService {
         return ligneFraisHorsForfaitRepository.findAll();
     }
 
-    public LigneFraisHorsForfait savLigneFraisHorsForfait( LigneFraisHorsForfait ligneFraisHorsForfait) {
+    public LigneFraisHorsForfait saveLigneFraisHorsForfait( LigneFraisHorsForfait ligneFraisHorsForfait) {
         return ligneFraisHorsForfaitRepository.save(ligneFraisHorsForfait);
     }
 }

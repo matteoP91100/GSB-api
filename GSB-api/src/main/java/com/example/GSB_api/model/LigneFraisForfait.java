@@ -14,6 +14,16 @@ public class LigneFraisForfait {
     private Long id;
     private int quantite;
 
+    @ManyToOne()
+        @JoinColumn(name ="user_id", nullable = false)
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
     @ManyToOne
         @JoinColumn(name ="ficheFrais_id", nullable = false)
     private FicheFrais ficheFrais;
@@ -24,16 +34,7 @@ public class LigneFraisForfait {
     public void setFicheFrais(FicheFrais ficheFrais) {
         this.ficheFrais = ficheFrais;
     }
-    @ManyToOne
-        @JoinColumn(name ="fraisForfait_id", nullable = false)
-    private FraisForfait fraisForfait;
 
-    public FraisForfait getFraisForfait() {
-        return fraisForfait;
-    }
-    public void setFraisForfait(FraisForfait fraisForfait) {
-        this.fraisForfait = fraisForfait;
-    }
     public Long getId() {
         return id;
     }

@@ -13,17 +13,12 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User findUserByUsernameAndPassword(String username, String password) {
-        return userRepository.findByUsernameAndPassword(username, password);
+
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
     }
 
-    public List<User> getAllUsers() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllUsers'");
-    }
-
-    public User saveUser(User user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveUser'");
+public User saveUser( User user) {
+        return userRepository.save(user);
     }
 }
