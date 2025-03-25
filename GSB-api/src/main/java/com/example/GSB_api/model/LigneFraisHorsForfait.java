@@ -2,6 +2,8 @@ package com.example.GSB_api.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class LigneFraisHorsForfait {
     
     @ManyToOne
         @JoinColumn(name ="ficheFrais_id", nullable = false)
+        @JsonBackReference
     private FicheFrais ficheFrais;
     
     public FicheFrais getFicheFrais() {

@@ -3,6 +3,8 @@ package com.example.GSB_api.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,9 +38,16 @@ public class FicheFrais {
 
 
     @OneToMany(mappedBy ="ficheFrais",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<FraisForfait> FraisForfaits;
 
+    public List<FraisForfait> getFraisForfaits() {
+        return FraisForfaits;
+    }
+
+
     @OneToMany(mappedBy ="ficheFrais",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<LigneFraisHorsForfait> ligneFraisHorsForfaits;
 
 
@@ -113,13 +122,6 @@ public class FicheFrais {
         this.user = user;
     }
 
-    public List<FraisForfait> getFraisForfaits() {
-        return FraisForfaits;
-    }
-
-    public void setFraisForfaits(List<FraisForfait> FraisForfaits) {
-        this.FraisForfaits = FraisForfaits;
-    }
 
 }
 

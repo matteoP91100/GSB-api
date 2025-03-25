@@ -1,5 +1,7 @@
 package com.example.GSB_api.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,15 +21,8 @@ public class FraisForfait {
     
     @ManyToOne
     @JoinColumn(name ="ficheFrais_id", nullable = false)
-
+@JsonBackReference
 private FicheFrais ficheFrais;
-
-    public FicheFrais getFicheFrais() {
-        return ficheFrais;
-    }
-    public void setFicheFrais(FicheFrais ficheFrais) {
-        this.ficheFrais = ficheFrais;
-    }
 
     public Long getId() {
         return id;

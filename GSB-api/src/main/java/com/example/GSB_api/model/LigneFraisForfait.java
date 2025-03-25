@@ -14,16 +14,7 @@ public class LigneFraisForfait {
     private Long id;
     private int quantite;
 
-    @ManyToOne()
-        @JoinColumn(name ="user_id", nullable = false)
-    private User user;
 
-    public User getUser() {
-        return user;
-    }
-    public void setUser(User user) {
-        this.user = user;
-    }
     @ManyToOne
         @JoinColumn(name ="ficheFrais_id", nullable = false)
     private FicheFrais ficheFrais;
