@@ -1,9 +1,12 @@
 package com.example.GSB_api.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -16,6 +19,8 @@ public class User {
     private String password;
     private String role;
     
+        @OneToMany(mappedBy = "user") // Assurez-vous que la relation est correcte
+        private List<FicheFrais> fichesFrais;
 
     public Long getId() {
         return id;

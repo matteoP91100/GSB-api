@@ -16,9 +16,10 @@ public class LigneFraisForfait {
 
 
     @ManyToOne
-        @JoinColumn(name ="ficheFrais_id", nullable = false)
-    private FicheFrais ficheFrais;
-   
+    @JoinColumn(name ="ficheFrais_id", nullable = false)
+private FicheFrais ficheFrais;
+
+
     public FicheFrais getFicheFrais() {
         return ficheFrais;
     }

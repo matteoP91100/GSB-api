@@ -1,11 +1,13 @@
 package com.example.GSB_api.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,4 +45,13 @@ public class FicheFraisController {
     public FicheFrais createFicheFrais(@RequestBody FicheFrais ficheFrais) {
         return ficheFraisService.saveFicheFrais(ficheFrais);
     }
+    @GetMapping("/{id}")
+public ResponseEntity<FicheFrais> getFicheFraisById(@PathVariable Long id) {
+    Optional<FicheFrais> fiche = ficheFraisService.getFicheFraisById(id);
+    if (fiche.isPresent()) {
+        return ResponseEntity.ok(fiche.get());
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
 }

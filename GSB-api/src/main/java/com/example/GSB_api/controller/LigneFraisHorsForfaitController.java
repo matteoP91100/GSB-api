@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,5 +44,13 @@ public class LigneFraisHorsForfaitController {
     public LigneFraisHorsForfait createLigneFraisHorsForfait (@RequestBody LigneFraisHorsForfait ligneFraisHorsForfait) {
         return ligneFraisHorsForfaitService.saveLigneFraisHorsForfait(ligneFraisHorsForfait);
     }
-    
+            @DeleteMapping("/{id}")
+        public ResponseEntity<Void> deleteFraisHorsForfaitById(@PathVariable Long id) {
+            boolean isDeleted = ligneFraisHorsForfaitService.deletefraisHorsForfaitById(id);  // Suppression via le service
+            if (isDeleted) {
+                return ResponseEntity.noContent().build();  // Réponse 204 No Content si la suppression est réussie
+            } else {
+                return ResponseEntity.notFound().build();  // Réponse 404 Not Found si l'élément n'existe pas
+            }
+}
 }

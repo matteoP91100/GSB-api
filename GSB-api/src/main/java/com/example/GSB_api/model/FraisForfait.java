@@ -16,14 +16,26 @@ public class FraisForfait {
     private Long id;
     private String type;
     private double montantF;
+    private int quantiteF;
 
 
-    
+    public int getQuantiteF() {
+        return quantiteF;
+    }
+    public void setQuantiteF(int quantiteF) {
+        this.quantiteF = quantiteF;
+    }
     @ManyToOne
     @JoinColumn(name ="ficheFrais_id", nullable = false)
 @JsonBackReference
 private FicheFrais ficheFrais;
 
+    public FicheFrais getFicheFrais() {
+        return ficheFrais;
+    }
+    public void setFicheFrais(FicheFrais ficheFrais) {
+        this.ficheFrais = ficheFrais;
+    }
     public Long getId() {
         return id;
     }

@@ -1,6 +1,7 @@
 package com.example.GSB_api.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,4 +22,10 @@ public class FicheFraisService {
     public FicheFrais saveFicheFrais (FicheFrais ficheFrais) {
         return FicheFraisRepository.save(ficheFrais);
     }
+    
+    public Optional<FicheFrais> getFicheFraisById(Long id) {
+        return FicheFraisRepository.findById(id);
+    }
+    
+
 }
