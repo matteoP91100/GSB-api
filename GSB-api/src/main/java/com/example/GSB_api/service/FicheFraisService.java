@@ -28,4 +28,10 @@ public class FicheFraisService {
     }
     
 
+    
+    public List<FicheFrais> getFichesParMois(int mois) {
+        return FicheFraisRepository.findFichesParMois(mois);
+    }
+
+    
 }

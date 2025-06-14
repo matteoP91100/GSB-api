@@ -3,11 +3,14 @@ package com.example.GSB_api.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,10 +18,12 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class FicheFrais {
-   @Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int nbJustificatifs;
     private double montantValide;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateModif;
 
     public Long getId() {
@@ -30,13 +35,15 @@ public class FicheFrais {
     }
 
 
-    @OneToMany(mappedBy ="ficheFrais",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<LigneFraisForfait> ligneFraisForfaits;
 
 
     @OneToMany(mappedBy ="ficheFrais",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<FraisForfait> FraisForfaits;
+
+    public void setFraisForfaits(List<FraisForfait> fraisForfaits) {
+        FraisForfaits = fraisForfaits;
+    }
 
     public List<FraisForfait> getFraisForfaits() {
         return FraisForfaits;
@@ -61,15 +68,6 @@ public class FicheFrais {
         @JoinColumn(name ="etat_id", nullable = false)
     private Etat etat;
 
-
-
-    public List<LigneFraisForfait> getLigneFraisForfaits() {
-        return ligneFraisForfaits;
-    }
-
-    public void setLigneFraisForfaits(List<LigneFraisForfait> ligneFraisForfaits) {
-        this.ligneFraisForfaits = ligneFraisForfaits;
-    }
 
 
     public List<LigneFraisHorsForfait> getLigneFraisHorsForfaits() {

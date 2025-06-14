@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.GSB_api.model.FicheFrais;
@@ -54,4 +55,14 @@ public ResponseEntity<FicheFrais> getFicheFraisById(@PathVariable Long id) {
         return ResponseEntity.notFound().build();
     }
 }
+
+
+@GetMapping("/mois/{mois}")
+public ResponseEntity<List<FicheFrais>> getFichesMois(@PathVariable int mois) {
+    List<FicheFrais> fiches = ficheFraisService.getFichesParMois(mois);
+    return ResponseEntity.ok(fiches);
 }
+
+
+}
+

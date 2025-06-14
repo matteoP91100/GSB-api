@@ -18,6 +18,9 @@ public class User {
     private String email;
     private String password;
     private String role;
+    private String region;
+    private int departement;
+
     
         @OneToMany(mappedBy = "user") // Assurez-vous que la relation est correcte
         private List<FicheFrais> fichesFrais;
@@ -67,5 +70,21 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getDepartement() {
+        return departement;
+    }
+
+    public void setDepartement(int departement) {
+        this.departement = departement;
+    }
+    
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 }
